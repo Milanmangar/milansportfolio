@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-  <title>Home Page</title>
+  <title>{{details.title}}</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,52 +29,40 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="http://www.facebook.com">Facebook</a>
-          <a class="nav-item nav-link" href="{% url 'resume'%}">Resume</a>
+          <a class="nav-item nav-link" href="{% url 'resume' %}">Resume</a>
           <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
 
         </div>
       </div>
     </nav>
   </header>
-
   <main role="main">
 
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi, I am Milan.</h1>
-        <p class="lead text-muted">My name is Milan Thapa.You are in my website which i have created myself.</p>
-        <img src="{% static 'IMG_Phoenix.jpg' %}" alt="no image found" height=300>
-        <br>
-        <br>
-        <p>
-          <a href="mailto:milanthapa898@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
+
+    <div class="container">
+
+
+      <h1 class="text-center pt-3">{{details.title}}</h1>
+      <div style="display: flex; justify-content: center;">
+        <img  class="center" src="{{ details.image.url }}" alt="no image found" height=400 >
       </div>
-    </section>
-
-    <div class="album py-5 bg-light">
+      <br>
+      <p class='text-center'>{{ details.pub_date }}</p>
       <div class="container">
-
-        <div class="row">
-          {% for job in jobs.all%}
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" height=230 >
-              <div class="card-body">
-
-                <p class="card-text">{{ job.summary }}</p>
-
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+        <div class="jumbotron">
+          <p class='text-center'>{{details.body}}</p>
         </div>
+
       </div>
+
+
     </div>
+
 
   </main>
 
-  <footer class="text-muted" color="black">
+  <hr>
+  <footer class="text-muted " >
     <div class="container text-center">
       <p class="float-right">
         <a href="#">Back to top</a>
@@ -83,7 +71,6 @@
           &copy Copyright Milan Thapa {% now "Y"%}
         </button></p>
     </div>
-
   </footer>
 
   <!-- Bootstrap core JavaScript
