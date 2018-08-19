@@ -1,0 +1,181 @@
+
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <title>{% block title %}{% endblock %}</title>
+
+<style media="screen">
+body{
+
+}
+
+#bimg{
+  margin-bottom: 0.4rem;
+}
+
+#first{
+
+  background-size: 1350px 650px;
+  opacity: 0.6;
+  padding-left: 0;
+}
+
+.about-text{
+  background: rgba(12,247,126,0.9);
+  color: white;
+  padding: 2rem;
+  margin: 5rem;
+}
+.project-title{
+  text-align: center;
+  background: rgba(204,239,62,0.9);
+
+}
+#footer-main{
+  background: rgba(62,239,142);
+  color: white;
+  font-size: 0.8rem;
+  padding: 2.5rem 0;
+}
+#h1f{
+  color: blue;
+}
+
+.messages{
+  text-align: center;
+  background: rgba(204,239,62,0.9);
+
+}
+
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-light  fixed-top" style="background-color: #e3f2fd;font-family: 'Roboto Mono', monospace;">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'portfolio.PNG' %}" alt="portfolio" height=26 width=26 id="bimg"> Milan Thapa</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#portfolio" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="portfolio">
+    <ul class=" nav navbar-nav  pull-sm-right">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"> Home </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'about' %}"> About Site </a>
+      </li
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'allblogs' %}"> Blog </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.linkedin.com/in/milan-thapa-87943010a/"> Linkedin </a>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Resume</button>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+<div >
+  {% block content %}
+  {% endblock %}
+</div>
+
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background:#e3f2fd;">
+        <h5 class="modal-title" id="exampleModalLabel" >Resume will be sent on your mail!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <form method='POST' action="{% url 'resume' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">First Name:</label>
+                <input type="text" class="form-control" id="fname" name="fname" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Last Name:</label>
+                <input type="text" class="form-control" id="lname" name="lname" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="modal-footer" >
+            <button type="button" class="btn btn-secondary ml-20" data-dismiss="modal" >Close</button>
+            <button type="submit" class="btn btn-primary">Send me Resume!</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<hr>
+<footer id="footer-main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <p>&copy Copyright 2018. </p>
+        <p> Coded by Milan</p>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'allblogs' %}">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <ul class="list-unstyled">
+          <li><a href="https://www.facebook.com/milan.thapa.395">Facebook</a></li>
+          <li><a href="https://www.instagram.com/milanmangar/">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/milan-thapa-87943010a/">Linkedin</a></li>
+
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <h6>Experience of making this website</h6>
+        <p>This page is majorly build with Django 2.0.2 in backend, bootstrap 4 for frontend, Postgres for Database. It was a great learning Experience.Planning to comeup with more projects in future! </p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+</body>
+<!-- Bootstrap core JavaScript>
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</html>

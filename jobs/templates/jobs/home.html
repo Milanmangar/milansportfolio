@@ -1,96 +1,80 @@
-
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load staticfiles %}
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
-  <title>Home Page</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="album.css" rel="stylesheet">
-</head>
-
-<body>
-
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'home' %}">Milan Thapa</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" float="right"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="http://www.facebook.com">Facebook</a>
-          <a class="nav-item nav-link" href="{% url 'resume'%}">Resume</a>
-          <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
-
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">Hi, I am Milan.</h1>
-        <p class="lead text-muted">My name is Milan Thapa.You are in my website which i have created myself.</p>
-        <img src="{% static 'IMG_Phoenix.jpg' %}" alt="no image found" height=300>
-        <br>
-        <br>
-        <p>
-          <a href="mailto:milanthapa898@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-      </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row">
-          {% for job in jobs.all%}
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" height=230 >
-              <div class="card-body">
-
-                <p class="card-text">{{ job.summary }}</p>
-
-              </div>
-            </div>
+{% block title %}PortFolio Home{% endblock %}
+{% block content %}
+</div>
+<section id="first" style="background-image: url('{% static "bb.jpeg" %}');">
+  <section id="first-content">
+    <div class="row" >
+      <div class="container cont">
+        <div class="col-sm-6">
+          <div class="about-text">
+              <h3>About Me</h3>
+              <p>This is Milan!</p>
+              <p class="lead">Hi There! Welcome to my website. I am a very enthusiastic Developer with love for Python and Django but Open to learn anything.</p>
+              <h5>Follow me on web</h5>
+              <a href="https://www.facebook.com/milan.thapa.395" class="btn btn-outline-primary">Facebook</a>
+              <a href="https://www.instagram.com/milanmangar/" class="btn btn-outline-primary">Instagram</a>
           </div>
-          {% endfor %}
         </div>
       </div>
     </div>
+  </section>
+</section>
+<br>
+<section class="messages" style="background:#d4edda;">
+  <div class="container"  >
+    {% if messages %}
 
-  </main>
+      <div class="col-xs-4">
 
-  <footer class="text-muted" color="black">
-    <div class="container text-center">
-      <p class="float-right">
-        <a href="#">Back to top</a>
-      </p>
-      <p><button type="button" class="btn btn-default btn-sm">
-          &copy Copyright Milan Thapa {% now "Y"%}
-        </button></p>
+          {% for message in messages %}
+          <p{% if message.tags == "success" %} class="alert alert-success" {% endif %} style="text-align:center;padding: 0.5rem 0">{{ message }}</p>
+          {% endfor %}
+
+      </div>
+
     </div>
+    {% endif %}
+  </div>
+</section>
 
-  </footer>
+<section class="project-title">
+  <div class="container">
 
-  <!-- Bootstrap core JavaScript
-  ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-</body>
-</html>
+    <h2>MY PROJECTS</h2>
+  </div>
+</section>
+</section>
+<section class="card-section">
+  <div class="card-deck">
+  <div class="card border-success mb-3 ">
+    <div class="card-header bg-transparent border-success"><h5>Weather Guide</h5></div>
+    <img class="card-img-top" src="{% static 'about.jpg' %}" alt="Card image cap" height=250>
+    <div class="card-body">
+      <a href="http://weatherguides.herokuapp.com" class="btn btn-primary">Visit the Website</a>
+      <p class="card-text"><small class="text-muted"><strong>Created on : </strong> 2nd August 2018</small></p>
+    </div>
+  </div>
+  <div class="card border-success mb-3">
+    <div class="card-header bg-transparent border-success"><h5>Product Pandit</h5></div>
+    <img class="card-img-top" src="{% static 'new.jpeg' %}" alt="Card image cap" height=250>
+    <div class="card-body">
+
+      <a href="https://productpanditapp.herokuapp.com/" class="btn btn-primary">Visit the Website</a>
+      <p class="card-text"><small class="text-muted">
+        <strong>Created on : </strong>20th July 2018</small></p>
+    </div>
+  </div>
+  <div class="card border-success mb-3">
+    <div class="card-header bg-transparent border-success"><h5>No project</h5></div>
+    <img class="card-img-top" src="{% static 'b3.jpeg' %}" alt="Card image cap" height=250>
+    <div class="card-body">
+
+      <a href="http://www.google.com" class="btn btn-primary">Not Yet Decided</a>
+      <p class="card-text"><small class="text-muted"><strong>Created on : </strong>Not Yet Decided</small></p>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

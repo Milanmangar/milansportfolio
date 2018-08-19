@@ -1,0 +1,41 @@
+body{
+
+}
+
+#bimg{
+  margin-bottom: 0.4rem;
+}
+
+#first{
+
+  background-size: 1350px 650px;
+  opacity: 0.6;
+  padding-left: 0;
+}
+
+.about-text{
+  background: rgba(12,247,126,0.9);
+  color: white;
+  padding: 2rem;
+  margin: 5rem;
+}
+.project-title{
+  text-align: center;
+  background: rgba(204,239,62,0.9);
+
+}
+#footer-main{
+  background: rgba(62,239,142);
+  color: white;
+  font-size: 0.8rem;
+  padding: 2.5rem 0;
+}
+#h1f{
+  color: blue;
+}
+
+.messages{
+  text-align: center;
+  background: rgba(204,239,62,0.9);
+
+}
